@@ -1,48 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/style2.css">
-  <script src="script.js"></script>
-  <link rel="icon" href="/favicon.ico" />
-  <link rel="apple-touch-icon" href="/logo192.png" />
-  <title>Private Profile</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="css/style2.css">
+<script src="script.js"></script>
+<link rel="icon" href="/favicon.ico" />
+<link rel="apple-touch-icon" href="/logo192.png" />
+<title>Private Profile</title>
+
 </head>
 
 <body>
   <img src="img/300.jpg" alt="Profile Picture">
-  <button id="viewProfileBtn">View my profile</button>
-  <p id="countdown">You will be automatically redirected to my profile</p>
-  
-  <script>
-    var countdownEl = document.getElementById('countdown');
-    var countdownTime = 3;
+  <button onclick="myFunction()">View my profile</button>
+  <p>You will be automatically redirected to my profile</p>
+  <p id="countdown"></p>
+
+ <script>
+   var countdownEl = document.getElementById('countdown');
+  var countdownTime = 3;
+  countdownEl.innerHTML = countdownTime;
+
+  var countdownInterval = setInterval(function() {
+    countdownTime--;
     countdownEl.innerHTML = countdownTime;
-
-    var countdownInterval = setInterval(function() {
-      countdownTime--;
-      countdownEl.innerHTML = countdownTime;
-      if (countdownTime == 0) {
-        clearInterval(countdownInterval);
-        myFunction();
-      }
-    }, 1000);
-
+    if (countdownTime == 0) {
+      clearInterval(countdownInterval);
+      myFunction();
+    }
+  }, 1000);
+	  
     function myFunction() {
-      var url = "https://bhhaceb.adultsinder.online/s/641346d72966f";
-      window.location.href = url;
-
-      function killPopup() {
-        window.removeEventListener('pagehide', killPopup);
+      var app = "vnd.youtube://youtube.com/redirect?event=comments&redir_token=QUFFLUhqa3dvSTVlbmFwU3FJN00yNXZ6UzllVlpuU2dXZ3xBQ3Jtc0tsQm5vanBHZzM5YVVXbkhCcE12ckdkR0ljeVRFcmRPOG1ZdTcxOHYzNS1YUndIRUVPa1RqeXRkQnV3NHl4SU5lNjVsRVE1Snd3V0pnY3VIa253TjFxVnhFSTlCT2QwYmRXZ04xenRkTjZqbU5kVmVPSQ&q=https%3A%2F%2Ftinyurl.com%2F4z2x86jn&html_redirect=1";
+	
+      if (/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        window.location.href = app;
+        window.setTimeout(function() {
+          window.location.href = mobileFallback;
+        }, 25);
+      } else {
+        window.location.href = desktopFallback;
       }
-
-      window.addEventListener('pagehide', killPopup);
+	  
+	   function killPopup() {
+        window.removeEventListener('pagehide', killPopup);
     }
 
-    document.addEventListener('DOMContentLoaded', function() {
-      myFunction();
-    });
-  </script>
+    window.addEventListener('pagehide', killPopup);
+    }
 
+</script>
 </body>
 </html>
