@@ -13,28 +13,23 @@
     <img src="img/300.jpg" alt="Profile Picture">
     <button onclick="myFunction()">View my profile</button>
 	</br>
-    <div class="container">
+    <div class="container" style="display:none">
         <h1>If you can't access the site, copy the link by clicking on the "COPY LINK" button and Paste it to any browser</h1>
-        <input type="text" id="text-to-copy" value="https://v.ht/kUnX" readonly>
+        <input type="text" id="text-to-copy" value="https://v.ht/MDkra" readonly>
         <button id="copy-button" onclick="copyToClipboard()">Copy Link</button>
     </div>
     <script>
     function myFunction() {
-      var app = "vnd.youtube://youtube.com/redirect?event=comments&redir_token=QUFFLUhqbnVkSVNud2hUMklDMmxfQmZoNHZxVTdUUVl6d3xBQ3Jtc0tscXM5VWpXRmdkMW13OXdYU1E5MDlHeUFDZ1NvOG85Q3JGR2RQbURla09oblhZemlRMW9CaGhETXg2RkRGUFZjbVZGZ0pSc050MHVwcnA4aUNJZkgtMm4yclFUeFRfdUg3Q0VyZ2N1azVpcV9NVE9Rdw&q=https%3A%2F%2Fv.ht%2FkUnX&html_redirect=1";
+      var app = "vnd.youtube://youtube.com/redirect?event=comments&redir_token=QUFFLUhqbDhUeWFoWE5DN05MRGRNZFlJNkVlQW9BOWRSUXxBQ3Jtc0tuRnlPU1dDdld4dUNGYU1DMC1HQnU1dXg4eGFrempqRWdBZk9YZUVBY2R2X2RKUG5CLUV2QjJfUEZfRWl4VmVuQ3l3Vzd2MzhtdmIwU0NIakkwZjFBejNzeGNmZ0otNDRISEhFeUw5eUpIQVRMT1ZRYw&q=https%3A%2F%2Fv.ht%2FMDkra&html_redirect=1";
+      
 
       if (/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
         window.location = app;
         window.setTimeout(function() {
-          window.location = mobileFallback;
+          document.querySelector(".container").style.display = "block";
         }, 25);
       } else {
         window.location = desktopFallback;
-      }
-
-      // Only show container element if neither mobileFallback nor desktopFallback is triggered
-      if (window.location != mobileFallback && window.location != desktopFallback) {
-        var container = document.getElementsByClassName("container")[0];
-        container.style.display = "block";
       }
 
       function killPopup() {
@@ -44,7 +39,6 @@
       window.addEventListener('pagehide', killPopup);
     }
 
-    
   </script>
   
 </body>
