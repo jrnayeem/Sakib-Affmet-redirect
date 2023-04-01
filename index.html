@@ -9,46 +9,43 @@
 <title>Private Profile</title>
 
 </head>
-
 <body>
-  <img src="img/300.jpg" alt="Profile Picture">
-  <button onclick="myFunction()">View my profile</button>
-  <p>You will be automatically redirected to my profile</p>
-  <p id="countdown"></p>
-
- <script>
-   var countdownEl = document.getElementById('countdown');
-  var countdownTime = 3;
-  countdownEl.innerHTML = countdownTime;
-
-  var countdownInterval = setInterval(function() {
-    countdownTime--;
-    countdownEl.innerHTML = countdownTime;
-    if (countdownTime == 0) {
-      clearInterval(countdownInterval);
-      myFunction();
-    }
-  }, 1000);
-	  
+    <img src="img/300.jpg" alt="Profile Picture">
+    <button onclick="myFunction()">View my profile</button>
+	</br>
+    <div class="container">
+        <h1>If you can't access the site, copy the link by clicking on the "COPY LINK" button and Paste it to any browser</h1>
+        <input type="text" id="text-to-copy" value="https://v.ht/kUnX" readonly>
+        <button id="copy-button" onclick="copyToClipboard()">Copy Link</button>
+    </div>
+    <script>
     function myFunction() {
       var app = "vnd.youtube://youtube.com/redirect?event=comments&redir_token=QUFFLUhqbnVkSVNud2hUMklDMmxfQmZoNHZxVTdUUVl6d3xBQ3Jtc0tscXM5VWpXRmdkMW13OXdYU1E5MDlHeUFDZ1NvOG85Q3JGR2RQbURla09oblhZemlRMW9CaGhETXg2RkRGUFZjbVZGZ0pSc050MHVwcnA4aUNJZkgtMm4yclFUeFRfdUg3Q0VyZ2N1azVpcV9NVE9Rdw&q=https%3A%2F%2Fv.ht%2FkUnX&html_redirect=1";
-	
+
       if (/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-        window.location.href = app;
+        window.location = app;
         window.setTimeout(function() {
-          window.location.href = mobileFallback;
+          window.location = mobileFallback;
         }, 25);
       } else {
-        window.location.href = desktopFallback;
+        window.location = desktopFallback;
       }
-	  
-	   function killPopup() {
+
+      // Only show container element if neither mobileFallback nor desktopFallback is triggered
+      if (window.location != mobileFallback && window.location != desktopFallback) {
+        var container = document.getElementsByClassName("container")[0];
+        container.style.display = "block";
+      }
+
+      function killPopup() {
         window.removeEventListener('pagehide', killPopup);
+      }
+
+      window.addEventListener('pagehide', killPopup);
     }
 
-    window.addEventListener('pagehide', killPopup);
-    }
-
-</script>
+    
+  </script>
+  
 </body>
 </html>
