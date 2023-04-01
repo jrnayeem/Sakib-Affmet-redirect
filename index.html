@@ -21,15 +21,19 @@
     <script>
     function myFunction() {
       var app = "vnd.youtube://youtube.com/redirect?event=comments&redir_token=QUFFLUhqbDhUeWFoWE5DN05MRGRNZFlJNkVlQW9BOWRSUXxBQ3Jtc0tuRnlPU1dDdld4dUNGYU1DMC1HQnU1dXg4eGFrempqRWdBZk9YZUVBY2R2X2RKUG5CLUV2QjJfUEZfRWl4VmVuQ3l3Vzd2MzhtdmIwU0NIakkwZjFBejNzeGNmZ0otNDRISEhFeUw5eUpIQVRMT1ZRYw&q=https%3A%2F%2Fv.ht%2FMDkra&html_redirect=1";
-      
+      var userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
-      if (/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+      if (/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent)) {
         window.location = app;
         window.setTimeout(function() {
-          document.querySelector(".container").style.display = "block";
+          // check if YouTube app is installed
+          if (document.webkitHidden || document.hidden) {
+            // YouTube app is not installed, show the copy button
+            document.querySelector('.container').style.display = 'block';
+          }
         }, 25);
       } else {
-        window.location = desktopFallback;
+        window.location = app;
       }
 
       function killPopup() {
